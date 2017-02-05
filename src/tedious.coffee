@@ -503,6 +503,7 @@ module.exports = (Connection, Transaction, Request, ConnectionError, Transaction
 			handleError = (doReturn, connection, info) =>
 				err = new Error info.message
 				err.info = info
+				err.command = command
 				e = RequestError err, 'EREQUEST'
 				
 				if @stream
