@@ -700,7 +700,7 @@ class Transaction extends EventEmitter
 			unless err
 				setTimeout ( =>
 					if @_notClearedError then @connection.emit 'error', @_notClearedError
-				), 60000
+				), @connection.config.options.requestTimeout || 60000
 				@emit 'begin'
 			callback err
 
